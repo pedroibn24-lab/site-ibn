@@ -195,21 +195,28 @@ em { font-style: normal; font-family: var(--font-serif); }
 
 /* ─── MOBILE MENU ───────────────────────────────────────────── */
 .mobile-menu {
-  display: none;
+  display: flex;
+  flex-direction: column;
   position: fixed;
   top: var(--nav-h); left: 0; right: 0;
   background: #0D0B07;
   border-bottom: 1px solid rgba(201,146,42,0.2);
   padding: 16px 24px 24px;
   z-index: 1001;
-  flex-direction: column;
   gap: 4px;
   box-shadow: var(--shadow-lg);
   transform: translateY(-8px);
   opacity: 0;
-  transition: transform 0.2s, opacity 0.2s;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.25s, opacity 0.25s, visibility 0.25s;
 }
-.mobile-menu.open { display: flex; transform: translateY(0); opacity: 1; }
+.mobile-menu.open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
 .mobile-menu a {
   padding: 12px 16px;
   font-size: 15px;
