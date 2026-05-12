@@ -1,0 +1,21 @@
+# Claude Code
+.claude/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Arquivos temporários
+*.tmp
+*.log
+*.bak
+
+# Dependências (se usar npm futuramente)
+node_modules/

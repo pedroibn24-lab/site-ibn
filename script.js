@@ -1,3 +1,39 @@
+// --- SECURITY HELPERS ---
+function escapeHtml(str) {
+  return String(str ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function sanitizeHtml(html) {
+  const allowed = ['p','br','strong','em','b','i','ul','ol','li','h2','h3','h4','blockquote','a','img','figure','figcaption','hr','span','div'];
+  const root = document.createElement('div');
+  root.innerHTML = html;
+  root.querySelectorAll('*').forEach(el => {
+    if (!allowed.includes(el.tagName.toLowerCase())) {
+      el.replaceWith(...el.childNodes);
+      return;
+    }
+    [...el.attributes].forEach(attr => {
+      if (attr.name.startsWith('on')) el.removeAttribute(attr.name);
+    });
+    if (el.tagName === 'A') {
+      const href = el.getAttribute('href') || '';
+      if (/^javascript:/i.test(href)) el.removeAttribute('href');
+      el.setAttribute('rel', 'noopener noreferrer');
+      el.setAttribute('target', '_blank');
+    }
+    if (el.tagName === 'IMG') {
+      const src = el.getAttribute('src') || '';
+      if (/^javascript:/i.test(src)) el.removeAttribute('src');
+    }
+  });
+  return root.innerHTML;
+}
+
 // --- DOM ELEMENTS ---
 const nav = document.getElementById('mainNav');
 const hamburger = document.getElementById('hamburgerBtn');
@@ -73,8 +109,14 @@ function submitToWhatsApp(event) {
 
   const consent = document.getElementById('fConsent')?.checked;
 
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
   if (!nome || !empresa || !email) {
     alert('Por favor, preencha Nome, Empresa e E-mail.');
+    return;
+  }
+  if (!emailRegex.test(email)) {
+    alert('Por favor, insira um e-mail válido.');
     return;
   }
   if (!consent) {
@@ -224,13 +266,18 @@ function abrirArtigo(id) {
   const imgSrc = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '';
   const dataFormatada = new Date(post.date).toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
 
-  document.getElementById('artModalTitle').innerHTML = post.title.rendered;
-  document.getElementById('artModalBody').innerHTML = post.content.rendered;
+  document.getElementById('artModalTitle').textContent = post.title.rendered;
+  document.getElementById('artModalBody').innerHTML = sanitizeHtml(post.content.rendered);
   document.getElementById('artModalCat').textContent = mainCat?.name || '';
   document.getElementById('artModalMeta').textContent = dataFormatada;
-  document.getElementById('artModalImg').innerHTML = imgSrc
-    ? `<img src="${imgSrc}" alt="${post.title.rendered}">`
-    : '';
+  const imgEl = document.getElementById('artModalImg');
+  imgEl.innerHTML = '';
+  if (imgSrc) {
+    const img = document.createElement('img');
+    img.src = imgSrc;
+    img.alt = post.title.rendered;
+    imgEl.appendChild(img);
+  }
 
   const modal = document.getElementById('artModal');
   modal.classList.add('open');
@@ -274,9 +321,18 @@ async function carregarBlogPosts() {
     });
 
     if (filtersEl) {
-      filtersEl.innerHTML = '<button class="bl-filter active" data-filter="todos">Todos</button>';
+      filtersEl.innerHTML = '';
+      const btnTodos = document.createElement('button');
+      btnTodos.className = 'bl-filter active';
+      btnTodos.dataset.filter = 'todos';
+      btnTodos.textContent = 'Todos';
+      filtersEl.appendChild(btnTodos);
       categorias.forEach((name, slug) => {
-        filtersEl.innerHTML += `<button class="bl-filter" data-filter="${slug}">${name}</button>`;
+        const btn = document.createElement('button');
+        btn.className = 'bl-filter';
+        btn.dataset.filter = escapeHtml(slug);
+        btn.textContent = name;
+        filtersEl.appendChild(btn);
       });
     }
 
@@ -297,19 +353,42 @@ async function carregarBlogPosts() {
       const card = document.createElement('a');
       card.className = `bl-card reveal reveal-zoom ${delayClass}`.trim();
       card.href = link;
-      card.role = 'button';
+      card.setAttribute('role', 'button');
       if (catSlug) card.dataset.cat = catSlug;
       card.addEventListener('click', (e) => { e.preventDefault(); abrirArtigo(post.id); });
-      card.innerHTML = `
-        <div class="bl-card-img">${imagem ? `<img src="${imagem}" alt="${titulo}" loading="lazy" decoding="async">` : ''}</div>
-        <div class="bl-card-body">
-          ${catName ? `<span class="bl-card-cat">${catName}</span>` : ''}
-          <div class="bl-card-meta">${dataFormatada}</div>
-          <h3>${titulo}</h3>
-          <p>${resumo}</p>
-          <span class="bl-card-read">Ler artigo →</span>
-        </div>
-      `;
+
+      const imgDiv = document.createElement('div');
+      imgDiv.className = 'bl-card-img';
+      if (imagem) {
+        const img = document.createElement('img');
+        img.src = imagem;
+        img.alt = titulo;
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        imgDiv.appendChild(img);
+      }
+
+      const bodyDiv = document.createElement('div');
+      bodyDiv.className = 'bl-card-body';
+      if (catName) {
+        const catEl = document.createElement('span');
+        catEl.className = 'bl-card-cat';
+        catEl.textContent = catName;
+        bodyDiv.appendChild(catEl);
+      }
+      const metaEl = document.createElement('div');
+      metaEl.className = 'bl-card-meta';
+      metaEl.textContent = dataFormatada;
+      const h3 = document.createElement('h3');
+      h3.textContent = titulo;
+      const p = document.createElement('p');
+      p.textContent = resumo;
+      const readEl = document.createElement('span');
+      readEl.className = 'bl-card-read';
+      readEl.textContent = 'Ler artigo →';
+      bodyDiv.append(metaEl, h3, p, readEl);
+
+      card.append(imgDiv, bodyDiv);
       grid.appendChild(card);
       revealObserver.observe(card);
     });
@@ -357,27 +436,32 @@ async function carregarPosts() {
         index === 2 ? 'reveal-d2' :
         '';
 
-      const card = `
-        <a class="bcard ${delayClass}"
-           href="${link}"
-           target="_blank">
+      const card = document.createElement('a');
+      card.className = `bcard ${delayClass}`.trim();
+      card.href = link;
+      card.target = '_blank';
+      card.rel = 'noopener noreferrer';
 
-          <div class="bcard-img">
-            <img src="${imagem}" alt="${titulo}">
-          </div>
+      const imgDiv = document.createElement('div');
+      imgDiv.className = 'bcard-img';
+      const img = document.createElement('img');
+      img.src = imagem;
+      img.alt = titulo;
+      imgDiv.appendChild(img);
 
-          <div class="bcard-body">
-            <h3>${titulo}</h3>
-            <p>${resumo}</p>
-            <span class="bcard-read">
-              Ler artigo →
-            </span>
-          </div>
+      const bodyDiv = document.createElement('div');
+      bodyDiv.className = 'bcard-body';
+      const h3 = document.createElement('h3');
+      h3.textContent = titulo;
+      const p = document.createElement('p');
+      p.textContent = resumo;
+      const read = document.createElement('span');
+      read.className = 'bcard-read';
+      read.textContent = 'Ler artigo →';
+      bodyDiv.append(h3, p, read);
 
-        </a>
-      `;
-
-      container.innerHTML += card;
+      card.append(imgDiv, bodyDiv);
+      container.appendChild(card);
 
     });
 
@@ -397,6 +481,14 @@ function showTab(tab, btn) {
   document.getElementById('tab-' + tab).classList.add('active');
   btn.classList.add('active');
 }
+
+// ─── INLINE HANDLER REPLACEMENTS ─────────────────────────────
+document.querySelector('.wpp-bubble-close')?.addEventListener('click', function() {
+  document.getElementById('wppChatBubble').style.display = 'none';
+});
+document.querySelector('.whatsapp-fab')?.addEventListener('click', function() {
+  window.open('https://wa.me/551936450337', '_blank', 'noopener,noreferrer');
+});
 
 // ─── COOKIE CONSENT BANNER ───────────────────────────────────
 (function initCookieBanner() {

@@ -10,7 +10,11 @@
       "WebFetch(domain:dev.ibnegocios.com.br)",
       "WebFetch(domain:ibnegocios.com.br)",
       "Bash(Get-ChildItem -Path \"c:\\\\SITE-IBN-DEPLOY-TESTE\" -Recurse -File)",
-      "Bash(Select-Object FullName)"
+      "Bash(Select-Object FullName)",
+      "Bash(Get-ChildItem -Path . -Force)",
+      "Bash(Select-Object Name)",
+      "Bash(grep -E \"innerHTML.*post\\\\.|innerHTML.*slug|innerHTML.*name|innerHTML =.*\\\\$\\\\{\" /c/SITE-IBN-DEPLOY-TESTE/script.js)",
+      "Bash(git add *)"
     ]
   }
 }
