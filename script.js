@@ -197,6 +197,15 @@ mobileMenu?.querySelectorAll('a').forEach((link) => link.addEventListener('click
 window.addEventListener('scroll', handleScroll, { passive: true });
 contactForm?.addEventListener('submit', submitToWhatsApp);
 
+document.querySelector('.sc-arrow--prev')?.addEventListener('click', () => changeService(-1));
+document.querySelector('.sc-arrow--next')?.addEventListener('click', () => changeService(1));
+document.querySelectorAll('.sc-dot[data-index]').forEach(dot => {
+  dot.addEventListener('click', () => goToService(parseInt(dot.dataset.index, 10)));
+});
+document.querySelectorAll('a[data-service]').forEach(link => {
+  link.addEventListener('click', () => goToService(parseInt(link.dataset.service, 10)));
+});
+
 _startCarousel();
 
 const _scWrapper = document.querySelector('.sc-wrapper');
@@ -481,6 +490,10 @@ function showTab(tab, btn) {
   document.getElementById('tab-' + tab).classList.add('active');
   btn.classList.add('active');
 }
+
+document.querySelectorAll('.legal-tab-btn[data-tab]').forEach(btn => {
+  btn.addEventListener('click', () => showTab(btn.dataset.tab, btn));
+});
 
 // ─── INLINE HANDLER REPLACEMENTS ─────────────────────────────
 document.querySelector('.wpp-bubble-close')?.addEventListener('click', function() {
