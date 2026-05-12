@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /privacidade-e-termos.html
+
+Sitemap: https://ibnegocios.com.br/sitemap.xml
