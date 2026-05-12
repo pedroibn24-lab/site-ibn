@@ -88,6 +88,26 @@
     .legal-section strong {
       color: var(--text);
     }
+    .btn-nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color .2s, border-color .2s, background .2s;
+    }
+    .btn-nav-back:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(201,146,42,.08);
+    }
   </style>
 </head>
 <body>
@@ -105,7 +125,10 @@
       </a>
     </div>
     <div class="nav-right">
-      <a href="index.html" class="btn btn-primary" style="font-size:14px;padding:9px 20px;">Voltar ao site</a>
+      <a href="index.html" class="btn-nav-back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Voltar ao site
+      </a>
     </div>
   </div>
 </nav>
@@ -113,7 +136,6 @@
 <!-- HERO -->
 <section class="legal-hero">
   <h1>Privacidade <em>&</em> Termos</h1>
-  <p>Última atualização: 14 de setembro de 2021</p>
 </section>
 
 <!-- TABS -->
