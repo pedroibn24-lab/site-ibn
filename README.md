@@ -1,3 +1,5 @@
+!!!!AINDA NÃO ESTÁ COMO SITE OFICIAL DA EMPRESA!!!!
+
 # Grupo IBN — Site Institucional
 
 Site institucional do **Grupo IBN (Instituto Brasileiro de Negócios)**, empresa especializada em treinamentos corporativos, consultoria e desenvolvimento organizacional.
@@ -77,11 +79,8 @@ SITE-IBN-DEPLOY-TESTE/
 
 O site é hospedado via **cPanel** em servidor Apache. Para publicar:
 
-1. Faça upload de todos os arquivos (exceto `.git/` e `.claude/`) para o diretório `public_html` via FTP ou gerenciador de arquivos do cPanel.
+1. Faça upload de todos os arquivos para o diretório `public_html` via FTP ou gerenciador de arquivos do cPanel. (mas mais fácil utilizar o link de deploy do github, porque quem vai se dar ao trabalho de fazer isso kkkk)
 2. Certifique-se de que o servidor suporta `.htaccess` com `mod_rewrite` e `mod_headers` habilitados.
 3. O redirecionamento HTTPS é automático via `.htaccess`.
 
-## Contato
 
-**Grupo IBN** — Instituto Brasileiro de Negócios  
-Site: [ibnegocios.com.br](https://ibnegocios.com.br)
