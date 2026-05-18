@@ -1,5 +1,7 @@
 !!!!AINDA NÃO ESTÁ COMO SITE OFICIAL DA EMPRESA!!!!
 
+(Optei por não colocar as imagens no repositório do GitHub)
+
 # Grupo IBN — Site Institucional
 
 Site institucional do **Grupo IBN (Instituto Brasileiro de Negócios)**, empresa especializada em treinamentos corporativos, consultoria e desenvolvimento organizacional.
@@ -84,3 +86,4 @@ O site é hospedado via **cPanel** em servidor Apache. Para publicar:
 3. O redirecionamento HTTPS é automático via `.htaccess`.
 
 
+O conteúdo está sob direitos autorais, a empresa não autoriza a publicação do site de forma indevida.
