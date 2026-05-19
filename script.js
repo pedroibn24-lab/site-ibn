@@ -273,7 +273,7 @@ function abrirArtigo(id) {
   const terms = post._embedded?.['wp:term']?.[0] || [];
   const mainCat = terms.find(t => t.taxonomy === 'category' && t.name.toLowerCase() !== 'sem categoria');
   const rawImgSrc = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '';
-  const imgSrc = rawImgSrc.replace('dev.ibnegocios.com.br/blog', 'ibnegocios.com.br/cmsDev');
+  const imgSrc = rawImgSrc.replace('dev.ibnegocios.com.br/blog', 'ibnegocios.com.br/cms_Dev');
   const dataFormatada = new Date(post.date).toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
 
   document.getElementById('artModalTitle').textContent = post.title.rendered;
@@ -315,7 +315,7 @@ async function carregarBlogPosts() {
 
   try {
     const resposta = await fetch(
-      'https://ibnegocios.com.br/cmsDev/wp-json/wp/v2/posts?_embed&per_page=50'
+      'https://ibnegocios.com.br/cms_Dev/wp-json/wp/v2/posts?_embed&per_page=50'
     );
     const posts = await resposta.json();
     _blogPosts = posts;
@@ -350,7 +350,7 @@ async function carregarBlogPosts() {
 
     posts.forEach((post, index) => {
       const rawImgSrc = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '';
-      const imgSrc = rawImgSrc.replace('dev.ibnegocios.com.br/blog', 'ibnegocios.com.br/cmsDev');
+      const imgSrc = rawImgSrc.replace('dev.ibnegocios.com.br/blog', 'ibnegocios.com.br/cms_Dev');
       const titulo = post.title.rendered;
       const resumo = post.excerpt.rendered.replace(/<[^>]+>/g, '').substring(0, 130) + '...';
       const link = post.link;
@@ -421,7 +421,7 @@ async function carregarPosts() {
   try {
 
     const resposta = await fetch(
-      'https://ibnegocios.com.br/cmsDev/wp-json/wp/v2/posts?_embed'
+      'https://ibnegocios.com.br/cms_Dev/wp-json/wp/v2/posts?_embed'
     );
 
     const posts = await resposta.json();
@@ -431,7 +431,7 @@ async function carregarPosts() {
     posts.slice(0, 3).forEach((post, index) => {
 
       const rawImagem = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '';
-      const imagem = rawImagem.replace('dev.ibnegocios.com.br/blog', 'ibnegocios.com.br/cmsDev');
+      const imagem = rawImagem.replace('dev.ibnegocios.com.br/blog', 'ibnegocios.com.br/cms_Dev');
 
       const titulo = post.title.rendered;
 
