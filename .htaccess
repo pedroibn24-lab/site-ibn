@@ -21,21 +21,6 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
   # Força HTTPS por 1 ano e inclui subdomínios (HSTS)
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 
-  # Content Security Policy — define quais origens são confiáveis
-  Header always set Content-Security-Policy "\
-    default-src 'self'; \
-    script-src 'self'; \
-    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; \
-    font-src 'self' https://fonts.gstatic.com; \
-    img-src 'self' data: blob: https://cdn-epdem.nitrocdn.com https://*.nitrocdn.com https://dev.ibnegocios.com.br https://secure.gravatar.com; \
-    connect-src 'self' https://dev.ibnegocios.com.br; \
-    frame-src https://www.google.com; \
-    object-src 'none'; \
-    base-uri 'self'; \
-    form-action 'self'; \
-    upgrade-insecure-requests; \
-  "
-
 </IfModule>
 
 # ─── CACHE ESTÁTICO ───────────────────────────────────────────
