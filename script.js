@@ -314,7 +314,7 @@ async function carregarBlogPosts() {
 
   try {
     const resposta = await fetch(
-      'https://dev.ibnegocios.com.br/blog/wp-json/wp/v2/posts?_embed&per_page=50'
+      'https://ibnegocios.com.br/cmsDev/wp-json/wp/v2/posts?_embed&per_page=50'
     );
     const posts = await resposta.json();
     _blogPosts = posts;
@@ -419,7 +419,7 @@ async function carregarPosts() {
   try {
 
     const resposta = await fetch(
-      'https://dev.ibnegocios.com.br/blog/wp-json/wp/v2/posts?_embed'
+      'https://ibnegocios.com.br/cmsDev/wp-json/wp/v2/posts?_embed'
     );
 
     const posts = await resposta.json();
