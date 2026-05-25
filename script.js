@@ -240,7 +240,7 @@ document.querySelector('.bl-filters')?.addEventListener('click', (e) => {
   let visible = 0;
 
   document.querySelectorAll('#blGrid .bl-card[data-cat]').forEach(card => {
-    const match = cat === 'todos' || card.dataset.cat === cat;
+    const match = cat === 'todos' || card.dataset.cat.split(' ').includes(cat);
     card.style.display = match ? '' : 'none';
     if (match) visible++;
   });
@@ -347,7 +347,7 @@ async function carregarBlogPosts() {
       categorias.forEach((name, slug) => {
         const btn = document.createElement('button');
         btn.className = 'bl-filter';
-        btn.dataset.filter = escapeHtml(slug);
+        btn.dataset.filter = slug;
         btn.textContent = name;
         filtersEl.appendChild(btn);
       });
@@ -363,7 +363,7 @@ async function carregarBlogPosts() {
       const link = post.link;
       const terms = post._embedded?.['wp:term']?.[0] || [];
       const mainCat = terms.find(t => t.taxonomy === 'category' && t.name.toLowerCase() !== 'sem categoria');
-      const catSlug = mainCat?.slug || '';
+      const allCatSlugs = terms.filter(t => t.taxonomy === 'category' && t.name.toLowerCase() !== 'sem categoria').map(t => t.slug);
       const catName = mainCat?.name || '';
       const delayClass = index % 3 === 1 ? 'reveal-d1' : index % 3 === 2 ? 'reveal-d2' : '';
       const dataFormatada = new Date(post.date).toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -371,7 +371,7 @@ async function carregarBlogPosts() {
       const card = document.createElement('a');
       card.className = `bl-card reveal reveal-zoom ${delayClass}`.trim();
       card.href = link;
-      if (catSlug) card.dataset.cat = catSlug;
+      if (allCatSlugs.length) card.dataset.cat = allCatSlugs.join(' ');
       card.addEventListener('click', (e) => { e.preventDefault(); abrirArtigo(post.id); });
 
       const imgDiv = document.createElement('div');
