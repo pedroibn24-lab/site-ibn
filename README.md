@@ -1,7 +1,3 @@
-!!!!AINDA NÃO ESTÁ COMO SITE OFICIAL DA EMPRESA!!!!
-
-(Optei por não colocar as imagens no repositório do GitHub)
-
 # Grupo IBN — Site Institucional
 
 Site institucional do **Grupo IBN (Instituto Brasileiro de Negócios)**, empresa especializada em treinamentos corporativos, consultoria e desenvolvimento organizacional.
@@ -27,6 +23,8 @@ Site estático de alta performance voltado para geração de leads B2B. Constru�
 - **Apache (.htaccess)** — Configurações de segurança, cache e compressão GZIP
 - **Google Fonts** — Libre Baskerville + DM Sans
 - **WordPress REST API** — Consumo de posts para o blog
+- **Git & GitHub** - Versionamento de código.
+- **GitHub Actions** - Automatização de deploy via FTP diretamente para o cPanel.
 
 ## Funcionalidades
 
@@ -53,6 +51,7 @@ Site estático de alta performance voltado para geração de leads B2B. Constru�
 - Fontes carregadas de forma não-bloqueante
 - Cache de longa duração para assets estáticos via `.htaccess`
 - Compressão GZIP habilitada no servidor
+- Utilizando imagens comprimidas em .webp
 
 ## SEO
 
@@ -61,29 +60,7 @@ Site estático de alta performance voltado para geração de leads B2B. Constru�
 - URLs canônicas em todas as páginas
 - Hierarquia de headings semântica
 
-## Estrutura de Arquivos
 
-```
-SITE-IBN-DEPLOY-TESTE/
-├── index.html
-├── blog.html
-├── treinamentos-personalizados.html
-├── privacidade-e-termos.html
-├── script.js
-├── style.css
-├── .htaccess
-├── robots.txt
-├── sitemap.xml
-└── [assets de imagem]
-```
-
-## Deploy
-
-O site é hospedado via **cPanel** em servidor Apache. Para publicar:
-
-1. Faça upload de todos os arquivos para o diretório `public_html` via FTP ou gerenciador de arquivos do cPanel. (mas mais fácil utilizar o link de deploy do github, porque quem vai se dar ao trabalho de fazer isso kkkk)
-2. Certifique-se de que o servidor suporta `.htaccess` com `mod_rewrite` e `mod_headers` habilitados.
-3. O redirecionamento HTTPS é automático via `.htaccess`.
-
+O site é hospedado via **cPanel** em servidor Apache. 
 
 O conteúdo está sob direitos autorais, a empresa não autoriza a publicação do site de forma indevida.
