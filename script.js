@@ -1,4 +1,6 @@
-// --- SECURITY HELPERS ---
+/* ============================================================
+   SEGURANÇA — funções de sanitização e escape de HTML
+   ============================================================ */
 function escapeHtml(str) {
   return String(str ?? '')
     .replace(/&/g, '&amp;')
@@ -34,14 +36,18 @@ function sanitizeHtml(html) {
   return root.innerHTML;
 }
 
-// --- DOM ELEMENTS ---
+/* ============================================================
+   ELEMENTOS DO DOM — referências cacheadas para uso nos handlers
+   ============================================================ */
 const nav = document.getElementById('mainNav');
 const hamburger = document.getElementById('hamburgerBtn');
 const mobileMenu = document.getElementById('mobileMenu');
 const contactForm = document.getElementById('contactForm');
 const successMsg = document.getElementById('successMsg');
 
-// --- MENU HANDLERS ---
+/* ============================================================
+   MENU MOBILE — funções de abertura e fechamento do menu
+   ============================================================ */
 function toggleMenu() {
   const isOpen = mobileMenu.classList.toggle('open');
   hamburger.classList.toggle('active', isOpen);
@@ -54,7 +60,9 @@ function closeMenu() {
   hamburger.setAttribute('aria-expanded', 'false');
 }
 
-// --- SCROLL NAVIGATION ---
+/* ============================================================
+   NAVEGAÇÃO POR SCROLL — destaca o link ativo conforme a seção visível
+   ============================================================ */
 function activateMenuLink() {
   const sections = document.querySelectorAll('main section[id]');
   const links = document.querySelectorAll('.nav-links a');
@@ -70,7 +78,9 @@ function activateMenuLink() {
   });
 }
 
-// --- PARALLAX ---
+/* ============================================================
+   PARALLAX — efeito de profundidade nas imagens de fundo
+   ============================================================ */
 const _parallaxEls = () => document.querySelectorAll('.hero-bg-photo img, .section-bg-photo img, .photo-strip-img');
 let _parallaxTick = false;
 
@@ -96,7 +106,9 @@ function handleScroll() {
   updateParallax();
 }
 
-// --- WHATSAPP CONTACT FORM ---
+/* ============================================================
+   FORMULÁRIO DE CONTATO — envio via WhatsApp com validação
+   ============================================================ */
 function submitToWhatsApp(event) {
   event.preventDefault();
 
@@ -142,7 +154,9 @@ function submitToWhatsApp(event) {
   setTimeout(() => successMsg?.classList.remove('show'), 4500);
 }
 
-// --- SCROLL REVEAL ---
+/* ============================================================
+   ANIMAÇÕES DE ENTRADA — revela elementos conforme o scroll
+   ============================================================ */
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -154,7 +168,9 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
-// --- SERVICES CAROUSEL ---
+/* ============================================================
+   CARROSSEL DE SERVIÇOS — navegação e autoplay entre os slides
+   ============================================================ */
 let _carouselTimer = null;
 
 function _startCarousel() {
@@ -191,7 +207,9 @@ function goToService(index) {
   if (dots[index]) dots[index].classList.add('active');
 }
 
-// --- INITIALIZATION ---
+/* ============================================================
+   INICIALIZAÇÃO — registro de eventos e chamadas iniciais
+   ============================================================ */
 hamburger?.addEventListener('click', toggleMenu);
 mobileMenu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
 window.addEventListener('scroll', handleScroll, { passive: true });
@@ -228,7 +246,9 @@ window.addEventListener('load', () => {
   if (serviceParam !== null) goToService(parseInt(serviceParam, 10));
 });
 
-// --- BLOG: FILTRO DE CATEGORIAS ---
+/* ============================================================
+   FILTRO DO BLOG — filtragem de posts por categoria
+   ============================================================ */
 document.querySelector('.bl-filters')?.addEventListener('click', (e) => {
   const btn = e.target.closest('.bl-filter');
   if (!btn) return;
@@ -249,7 +269,9 @@ document.querySelector('.bl-filters')?.addEventListener('click', (e) => {
   if (blEmpty) blEmpty.style.display = visible === 0 ? 'block' : 'none';
 });
 
-// --- TREINAMENTOS: TABS DOS FORMATOS ---
+/* ============================================================
+   TABS DE TREINAMENTOS — alternância entre formatos de conteúdo
+   ============================================================ */
 document.querySelectorAll('.tp-tab').forEach((btn) => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.tp-tab').forEach((b) => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
@@ -489,7 +511,9 @@ async function carregarPosts() {
   }
 }
 
-// ─── PRIVACIDADE & TERMOS ────────────────────────────────────
+/* ============================================================
+   PRIVACIDADE & TERMOS — tabs da página legal e ano do rodapé
+   ============================================================ */
 document.querySelectorAll('[id="footer-year"]').forEach(el => {
   el.textContent = new Date().getFullYear();
 });
@@ -505,7 +529,9 @@ document.querySelectorAll('.legal-tab-btn[data-tab]').forEach(btn => {
   btn.addEventListener('click', () => showTab(btn.dataset.tab, btn));
 });
 
-// ─── INLINE HANDLER REPLACEMENTS ─────────────────────────────
+/* ============================================================
+   HANDLERS DE ELEMENTOS FIXOS — balão e FAB do WhatsApp
+   ============================================================ */
 document.querySelector('.wpp-bubble-close')?.addEventListener('click', function() {
   document.getElementById('wppChatBubble').style.display = 'none';
 });
@@ -513,7 +539,9 @@ document.querySelector('.whatsapp-fab')?.addEventListener('click', function() {
   window.open('https://wa.me/551936450337', '_blank', 'noopener,noreferrer');
 });
 
-// ─── COOKIE CONSENT BANNER ───────────────────────────────────
+/* ============================================================
+   BANNER DE COOKIES — exibição e aceite da política de privacidade
+   ============================================================ */
 (function initCookieBanner() {
   if (localStorage.getItem('ibn-cookie-consent')) return;
 
