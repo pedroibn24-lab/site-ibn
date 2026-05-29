@@ -7,6 +7,19 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 RewriteCond %{HTTP_HOST} ^www\.ibnegocios\.com\.br [NC]
 RewriteRule ^ https://ibnegocios.com.br%{REQUEST_URI} [L,R=301]
 
+# ─── REDIRECIONAMENTOS DE URLs ANTIGAS ────────────────────────
+Redirect 301 /blog/ https://ibnegocios.com.br/blog.html
+Redirect 301 /fale-conosco/ https://ibnegocios.com.br/#contato
+Redirect 301 /termos-de-uso https://ibnegocios.com.br/privacidade-e-termos.html
+Redirect 301 /educacao-corporativa/treinamentos-in-company/ https://ibnegocios.com.br/treinamentos-personalizados.html
+Redirect 301 /servicos/treinamentos-in-company https://ibnegocios.com.br/treinamentos-personalizados.html
+Redirect 301 /posts/ https://ibnegocios.com.br/blog.html
+Redirect 301 /mudanca-no-exame-pmi/ https://ibnegocios.com.br/blog.html
+Redirect 301 /quem-somos/ https://ibnegocios.com.br/#quem-somos
+
+RewriteRule ^blog/(.+)$ https://ibnegocios.com.br/blog.html [L,R=301]
+RewriteRule ^servicos/(.+)$ https://ibnegocios.com.br/#servicos [L,R=301]
+
 # ─── SECURITY HEADERS ─────────────────────────────────────────
 <IfModule mod_headers.c>
 
