@@ -539,35 +539,4 @@ document.querySelector('.whatsapp-fab')?.addEventListener('click', function() {
   window.open('https://wa.me/551936450337', '_blank', 'noopener,noreferrer');
 });
 
-/* ============================================================
-   BANNER DE COOKIES — exibição e aceite da política de privacidade
-   ============================================================ */
-(function initCookieBanner() {
-  if (localStorage.getItem('ibn-cookie-consent')) return;
-
-  const banner = document.createElement('div');
-  banner.id = 'cookieBanner';
-  banner.setAttribute('role', 'region');
-  banner.setAttribute('aria-label', 'Aviso de cookies');
-  banner.innerHTML =
-    '<p>Utilizamos cookies para garantir a melhor experiência no site. Ao continuar navegando, você concorda com nossa ' +
-    '<a href="privacidade-e-termos.html">Política de Privacidade</a>.</p>' +
-    '<div class="cookie-actions">' +
-    '<button id="cookieAccept">Aceitar</button>' +
-    '<button id="cookieDecline">Recusar</button>' +
-    '</div>';
-  document.body.appendChild(banner);
-
-  function dismiss(choice) {
-    localStorage.setItem('ibn-cookie-consent', choice);
-    banner.style.transition = 'transform .3s ease, opacity .3s ease';
-    banner.style.transform = 'translateY(100%)';
-    banner.style.opacity = '0';
-    setTimeout(() => banner.remove(), 320);
-  }
-
-  document.getElementById('cookieAccept').addEventListener('click', function() { dismiss('accepted'); });
-  document.getElementById('cookieDecline').addEventListener('click', function() { dismiss('declined'); });
-})();
-
 carregarPosts();
