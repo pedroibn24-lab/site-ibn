@@ -25,7 +25,6 @@ Site estático de alta performance voltado para geração de leads B2B. Constru�
 - **Apache (.htaccess)** — Configurações de segurança, cache e compressão GZIP
 - **Google Fonts** — Libre Baskerville + DM Sans
 - **WordPress REST API** — Consumo de posts para o blog
-- **Git & GitHub** - Versionamento de código.
 - **GitHub Actions** - Automatização de deploy via FTP diretamente para o cPanel.
 
 ## Funcionalidades
