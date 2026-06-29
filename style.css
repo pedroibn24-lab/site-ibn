@@ -37,7 +37,6 @@ body {
   color: var(--text);
   background: var(--bg);
   line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
@@ -80,6 +79,9 @@ em { font-style: normal; font-family: var(--font-serif); }
 /* ============================================================
    NAV
    ============================================================ */
+
+/* parei aqui */
+
 .nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -87,7 +89,6 @@ em { font-style: normal; font-family: var(--font-serif); }
   height: var(--nav-h);
   background: rgba(0,0,0,0.2);
   backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
@@ -1540,7 +1541,6 @@ em { font-style: normal; font-family: var(--font-serif); }
 .hero h1 em {
   font-family:var(--font-serif);
   background:linear-gradient(135deg,#E8C57A 0%,#C9922A 50%,#E8C57A 100%);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
   background-clip:text;
   background-size:200% 200%;
   animation:gradient-flow 4s ease infinite;
@@ -1551,12 +1551,10 @@ em { font-style: normal; font-family: var(--font-serif); }
 .contato-left h2 em,
 .blog-head h2 em {
   background:linear-gradient(135deg,#E8C57A 0%,var(--accent) 100%);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
   background-clip:text;
 }
 .diff-left h2 em {
   background:linear-gradient(135deg,#E8C57A 0%,var(--accent) 100%);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
   background-clip:text;
 }
 
@@ -1752,19 +1750,19 @@ em { font-style: normal; font-family: var(--font-serif); }
 /* números com gradiente — step-items ficam nas posições 2,4,6,8 (step-connector é o 1º filho) */
 .step-item:nth-child(2) .step-num {
   background:linear-gradient(135deg,#E8C57A,#C9922A);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  background-clip:text;
 }
 .step-item:nth-child(4) .step-num {
   background:linear-gradient(135deg,#7c3aed,#a855f7);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  background-clip:text;
 }
 .step-item:nth-child(6) .step-num {
   background:linear-gradient(135deg,#f97316,#f59e0b);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  background-clip:text;
 }
 .step-item:nth-child(8) .step-num {
   background:linear-gradient(135deg,#14b8a6,#06b6d4);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  background-clip:text;
 }
 
 /* borda piscante por card */
@@ -2007,7 +2005,6 @@ em { font-style: normal; font-family: var(--font-serif); }
   transform:translateX(-50%);
   background:rgba(255,255,255,.18);
   backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
   border:1px solid rgba(255,255,255,.35);
   border-radius:100px;
   padding:5px 16px;
@@ -2025,7 +2022,6 @@ em { font-style: normal; font-family: var(--font-serif); }
   width:72px; height:72px;
   background:rgba(255,255,255,.2);
   backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
   border:2px solid rgba(255,255,255,.45);
   border-radius:50%;
   display:flex; align-items:center; justify-content:center;
@@ -2137,9 +2133,7 @@ em { font-style: normal; font-family: var(--font-serif); }
     #9B7520 100%
   );
   background-size: 200% 200%;
-  -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: transparent;
   color: transparent;
   animation: gradient-blink 1.6s ease-in-out infinite;
 }
@@ -2516,8 +2510,6 @@ em { font-style: normal; font-family: var(--font-serif); }
   font-style: normal;
   font-family: var(--font-serif);
   background: linear-gradient(135deg,var(--accent) 0%,#7c3aed 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 .tp-intro-text p {
