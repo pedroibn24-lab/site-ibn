@@ -182,24 +182,6 @@ em {
   background: rgba(201, 146, 42, 0.1);
 }
 
-.btn-nav-ghost {
-  padding: 8px 16px;
-  font-size: 13px;
-  font-weight: 600;
-  font-family: var(--font-sans);
-  color: var(--text);
-  background: transparent;
-  border: 1px solid rgba(201, 146, 42, 0.3);
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition:
-    background 0.15s,
-    border-color 0.15s;
-}
-.btn-nav-ghost:hover {
-  background: rgba(201, 146, 42, 0.1);
-  border-color: var(--accent);
-}
 .btn-nav-primary {
   padding: 8px 18px;
   font-size: 13px;
