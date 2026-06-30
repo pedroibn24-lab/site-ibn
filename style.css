@@ -125,6 +125,7 @@ em {
   border-bottom-color: rgba(201, 146, 42, 0.2);
   box-shadow: var(--shadow-sm);
 }
+
 .nav-inner {
   max-width: var(--max-w);
   margin: 0 auto;
@@ -135,11 +136,13 @@ em {
   justify-content: space-between;
   gap: 24px;
 }
+
 .nav-left {
   display: flex;
   align-items: center;
   gap: 40px;
 }
+
 .nav-logo img {
   display: block;
   height: 48px;
@@ -151,10 +154,10 @@ em {
   filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1));
   transition: transform 0.2s;
 }
-
 .nav-logo:hover img {
   transform: translateX(-100px) scale(1.03);
 }
+
 .nav-links {
   display: flex;
   list-style: none;
@@ -181,6 +184,7 @@ em {
   color: var(--accent);
   background: rgba(201, 146, 42, 0.1);
 }
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -495,15 +499,7 @@ em {
   animation-duration: 4.5s;
   animation-delay: -2s;
 }
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
+
 .hv-card-header {
   display: flex;
   align-items: center;
@@ -4856,4 +4852,13 @@ em {
   border-radius: 2px;
   margin: 0 auto 28px;
   opacity: 0.5;
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
