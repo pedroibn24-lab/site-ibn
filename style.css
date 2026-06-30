@@ -187,9 +187,6 @@ em {
   color: var(--accent);
   background: rgba(201, 146, 42, 0.1);
 }
-.nav.scrolled .nav-links a:hover {
-  background: rgba(201, 146, 42, 0.1);
-}
 
 .nav-tel {
   font-size: 13px;
