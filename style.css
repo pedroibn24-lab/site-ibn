@@ -155,12 +155,6 @@ em {
 .nav-logo:hover img {
   transform: translateX(-100px) scale(1.03);
 }
-.logo-fallback {
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--accent);
-  font-family: var(--font-sans);
-}
 .nav-links {
   display: flex;
   list-style: none;
