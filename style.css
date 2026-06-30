@@ -406,9 +406,6 @@ em {
   opacity: 0.95;
   margin-left: -60px;
 }
-.btn-primary-lg {
-  text-decoration: none;
-}
 .hero h1 {
   font-size: clamp(36px, 5vw, 60px);
   font-weight: 700;
@@ -439,8 +436,10 @@ em {
   font-size: 15px;
   font-weight: 600;
   font-family: var(--font-sans);
+  text-decoration: none;
   color: #fff;
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--accent) 0%, #9b7520 100%);
+  background-size: 200% 200%;
   border: none;
   border-radius: var(--radius-md);
   cursor: pointer;
@@ -448,12 +447,12 @@ em {
     background 0.15s,
     transform 0.1s,
     box-shadow 0.15s;
-  box-shadow: 0 4px 20px rgba(201, 146, 42, 0.4);
+  box-shadow: 0 4px 24px rgba(201, 146, 42, 0.45);
+  animation: gradient-flow 3s ease infinite;
 }
 .btn-primary-lg:hover {
-  background: var(--accent-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 28px rgba(201, 146, 42, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 36px rgba(201, 146, 42, 0.65);
 }
 .btn-ghost-lg {
   padding: 15px 28px;
@@ -2453,24 +2452,6 @@ em {
     transparent
   );
   animation: shimmer-pass 3.5s ease-in-out infinite;
-}
-
-/* ============================================================
-   BOTÃO PRIMÁRIO COM GRADIENTE ANIMADO
-   ============================================================ */
-.btn-primary-lg {
-  background: linear-gradient(
-    135deg,
-    var(--accent) 0%,
-    #9b7520 100%
-  ) !important;
-  background-size: 200% 200% !important;
-  animation: gradient-flow 3s ease infinite;
-  box-shadow: 0 4px 24px rgba(201, 146, 42, 0.45) !important;
-}
-.btn-primary-lg:hover {
-  transform: translateY(-3px) !important;
-  box-shadow: 0 8px 36px rgba(201, 146, 42, 0.65) !important;
 }
 
 /* ============================================================
