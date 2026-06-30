@@ -188,17 +188,6 @@ em {
   background: rgba(201, 146, 42, 0.1);
 }
 
-.nav-tel {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-muted);
-  text-decoration: none;
-  padding: 8px 12px;
-  transition: color 0.15s;
-}
-.nav-tel:hover {
-  color: var(--text);
-}
 .btn-nav-ghost {
   padding: 8px 16px;
   font-size: 13px;
