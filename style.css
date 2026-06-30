@@ -293,22 +293,11 @@ em {
     border-color 0.15s,
     box-shadow 0.15s !important;
 }
-.nav-link-ext svg {
-  flex-shrink: 0;
-  opacity: 0.8;
-  transition:
-    transform 0.2s ease,
-    opacity 0.2s;
-}
 .nav-link-ext:hover {
   background: var(--accent) !important;
   color: #fff !important;
   border-color: var(--accent) !important;
   box-shadow: 0 4px 16px rgba(201, 146, 42, 0.35) !important;
-}
-.nav-link-ext:hover svg {
-  transform: translate(2px, -2px);
-  opacity: 1;
 }
 .nav:not(.scrolled) .nav-link-ext {
   color: #fff !important;
