@@ -11,7 +11,6 @@
 
 :root {
   --navy: #070503;
-  --navy-light: #0d0b07;
   --accent: #c9922a;
   --accent-hover: #a97720;
   --accent-light: rgba(201, 146, 42, 0.12);
@@ -34,6 +33,11 @@
   --font-serif: "Libre Baskerville", Georgia, serif;
   --max-w: 1160px;
   --nav-h: 56px;
+  --purple: #7c3aed;
+  --orange: #f97316;
+  --yellow: #eab308;
+  --teal: #14b8a6;
+  --pink: #ec4899;
 }
 
 html {
@@ -2031,26 +2035,6 @@ em {
   .logos-track {
     gap: 24px;
   }
-}
-
-/* ============================================================
-   IBN 2.0 — ANIMAÇÕES RICAS, CORES & ELEMENTOS VISUAIS
-   ============================================================ */
-
-/* ============================================================
-   NOVAS VARIÁVEIS DE COR
-   ============================================================ */
-:root {
-  --purple: #7c3aed;
-  --purple-mid: #8b5cf6;
-  --purple-light: #ede9fe;
-  --orange: #f97316;
-  --orange-light: #fff7ed;
-  --yellow: #eab308;
-  --teal: #14b8a6;
-  --teal-light: #f0fdfa;
-  --pink: #ec4899;
-  --rose: #f43f5e;
 }
 
 /* ============================================================
