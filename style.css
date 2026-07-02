@@ -778,7 +778,7 @@ em {
   transform: scale(1.1);
 }
 
-.step-item h4 {
+.step-item h3 {
   font-size: 15px;
   font-weight: 700;
   margin-bottom: 8px;
@@ -1630,7 +1630,7 @@ em {
   color: #fff;
 }
 
-.footer-col h4 {
+.footer-col h2 {
   font-size: 13px;
   font-weight: 700;
   color: #fff;
@@ -4178,7 +4178,7 @@ em {
   font-size: 20px;
 }
 
-.tp-outro-card h4 {
+.tp-outro-card h3 {
   font-size: 15px;
   font-weight: 700;
   color: var(--text);
