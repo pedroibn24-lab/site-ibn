@@ -711,7 +711,7 @@ em {
   transform: translateY(-2px);
 }
 
-.vcard h4 {
+.vcard h3 {
   font-size: 14px;
   font-weight: 700;
   color: var(--text);
